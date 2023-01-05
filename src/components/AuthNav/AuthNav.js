@@ -1,13 +1,32 @@
-import { NavLink } from 'react-router-dom'
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItem from '@mui/material/ListItem';
-
+import { NavLink } from 'react-router-dom';
 
 export const AuthNav = () => {
   return (
-    <ListItem disablePadding>
-      <NavLink to="/registration"><ListItemButton sx={{ textAlign: 'center' }}>Registration</ListItemButton></NavLink>
-      <NavLink to="/login"><ListItemButton sx={{ textAlign: 'center' }}>Log in</ListItemButton></NavLink>
-    </ListItem>
+    <>
+      <NavLink
+        style={{
+          textDecoration: 'none',
+          color: 'white',
+          fontWeight: 500,
+          textTransform: 'uppercase',
+          margin: 10,
+        }}
+        to="/registration"
+      >
+        Registration
+      </NavLink>
+      <NavLink
+        style={{
+          textDecoration: 'none',
+          color: 'white',
+          fontWeight: 500,
+          textTransform: 'uppercase',
+          margin: 10,
+        }}
+        to="/login"
+      >
+        Login
+      </NavLink>
+    </>
   );
 };

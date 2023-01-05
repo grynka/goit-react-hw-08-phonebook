@@ -6,5 +6,5 @@ export const Phonebook = styled.main`
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
-text-align: center;
+  text-align: center;
 `;

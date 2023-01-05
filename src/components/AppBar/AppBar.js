@@ -19,19 +19,21 @@ return (
             component="a"
             href=""
             sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              mr: 5,
+              display: { xs: 'none', md: 'flex' },
               flexGrow: 1,
               fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
+              fontWeight: 500,
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
         Phonebook
         </Typography>
-        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+        <Box sx={{ flexGrow: 24,
+        fontWeight: 700,
+        textDecoration: 'none'
+         }}>
            <Navigation />
           </Box>
     {isLoggedIn ? <UserMenu /> : <AuthNav />}

@@ -14,7 +14,6 @@ import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
@@ -26,19 +25,20 @@ export const LoginForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.currentTarget;
-    dispatch(login({
-         email: form.elements.email.value, 
-         password: form.elements.password.value,
-        })
-         );
-         form.reset();
+    dispatch(
+      login({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
   };
 
   return (
-       <Box sx={{ width: '100%', textAlign: 'center' }}>
+    <Box sx={{ width: '100%', textAlign: 'center' }}>
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
-      <TextField
+        <TextField
           label="Email"
           name="email"
           id="outlined-start-adornment2"
@@ -51,12 +51,12 @@ export const LoginForm = () => {
             ),
           }}
         />
-          <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">
             Password
           </InputLabel>
           <OutlinedInput
-            name='password'
+            name="password"
             id="outlined-adornment-password"
             type={showPassword ? 'text' : 'password'}
             startAdornment={
@@ -81,9 +81,11 @@ export const LoginForm = () => {
         </FormControl>
 
         <p>
-          <Button variant="outlined" type='submit'>Log in</Button>
+          <Button variant="outlined" type="submit">
+            Log in
+          </Button>
         </p>
       </form>
     </Box>
   );
-}
+};

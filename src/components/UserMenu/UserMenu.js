@@ -2,6 +2,7 @@ import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { logout } from 'redux/auth/operatons';
 import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
 
 export const UserMenu = () => {
   const { username } = useAuth();
@@ -13,8 +14,18 @@ export const UserMenu = () => {
 
   return (
     <>
-      <p>Welcome, {username} | </p>
-      <Button color="inherit" type="button" onClick={handleOut}>
+      <Typography>Welcome, {username}</Typography>
+      <Button
+        style={{
+          textDecoration: 'none',
+          color: 'white',
+          fontWeight: 700,
+          textTransform: 'uppercase',
+          margin: 10,
+        }}
+        type="button"
+        onClick={handleOut}
+      >
         Log out
       </Button>
     </>
