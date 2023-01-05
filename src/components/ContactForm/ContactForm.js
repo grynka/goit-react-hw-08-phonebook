@@ -6,7 +6,7 @@ import { getContacts } from 'redux/selectors';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const items = useSelector(getContacts);
   const contactsName = items.map(contact => contact.name);
@@ -17,8 +17,8 @@ export default function ContactForm() {
         setName(event.currentTarget.value);
         break;
 
-      case 'phone':
-        setPhone(event.currentTarget.value);
+      case 'number':
+        setNumber(event.currentTarget.value);
         break;
 
       default:
@@ -31,9 +31,9 @@ export default function ContactForm() {
     if (contactsName.includes(name)) {
       alert('данный контакт уже существует');
       return;
-    } else dispatch(addContact({ name, phone }));
+    } else dispatch(addContact({ name, number }));
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -54,8 +54,8 @@ export default function ContactForm() {
         Phone
         <Input
           type="tel"
-          name="phone"
-          value={phone}
+          name="number"
+          value={number}
           onChange={handleChange}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
