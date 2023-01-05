@@ -6,29 +6,11 @@ export const Navigation = () => {
   const { isLoggedIn } = useAuth();
   return (
     <Navigate>
-      <NavLink
-        to="/"
-        style={{
-          textDecoration: 'none',
-          color: 'white',
-          fontWeight: 700,
-          textTransform: 'uppercase',
-          margin: 10,
-        }}
-      >
+      <NavLink>
         Home
       </NavLink>
       {isLoggedIn && (
-        <NavLink
-          to="/contacts"
-          style={{
-            textDecoration: 'none',
-            color: 'white',
-            fontWeight: 700,
-            textTransform: 'uppercase',
-            margin: 10,
-          }}
-        >
+        <NavLink>
           Contacts
         </NavLink>
       )}

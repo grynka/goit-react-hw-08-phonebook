@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
 
 export const Navigate = styled.nav`
-  color: '#FFFFFF';
-  text-decoration: 'none';
+  text-decoration: none;
+  color: white;
   font-weight: 700;
+  text-transform: uppercase;
+  margin: 10;
 `;

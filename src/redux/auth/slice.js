@@ -19,11 +19,20 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(register.rejected, (state, action) => state)
+      .addCase(register.rejected, (state, action) => {
+        if (action.error.message === "Rejected") {
+          alert('ошибка регистрации, введенные данные не коректны')
+        }
+      })
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+      })
+      .addCase(login.rejected, (state, action) => {
+        if (action.error.message === "Rejected") {
+          alert('ошибка входа, введенные данные не коректны')
+        }
       })
       .addCase(logout.fulfilled, (state, action) => {
         state.user = { name: null, email: null };
