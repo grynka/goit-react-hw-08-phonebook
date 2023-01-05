@@ -7,6 +7,7 @@ import { deleteContact } from 'redux/operation';
 import { MdAccountCircle, MdHighlightOff } from 'react-icons/md';
 import { List, BtnDel, Item } from './ContactList.styled';
 
+
 const ContactList = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);

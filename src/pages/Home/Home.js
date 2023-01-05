@@ -1,5 +1,6 @@
+
 const Home = () => {
-return <div></div>
+return <p>Welcome Phonebook App</p>
 }
 
 export default Home
