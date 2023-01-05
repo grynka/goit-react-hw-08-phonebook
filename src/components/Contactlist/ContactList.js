@@ -32,10 +32,10 @@ const ContactList = () => {
       {error && <p>{error}</p>}
       <List>
         {filteredContacts.length > 0 &&
-          filteredContacts.map(({ id, name, phone }) => (
+          filteredContacts.map(({ id, name, number }) => (
             <Item key={id}>
               <MdAccountCircle style={{ fontSize: '20px' }} />
-              {name}, {phone}{' '}
+              {name}, {number}{' '}
               <BtnDel onClick={() => deleteContactId(id)}>
                 <MdHighlightOff style={{ fontSize: '20px' }} />
               </BtnDel>
