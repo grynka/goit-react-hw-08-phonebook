@@ -1,36 +1,26 @@
-import Filter from './Filter/Filter';
-import ContactForm from './ContactForm/ContactForm';
-import ContactList from './Contactlist/ContactList';
-import { Phonebook } from './App.styled';
-import { MdMenuBook } from 'react-icons/md';
-import { Route, Routes, Outlet, Navigate } from 'react-router-dom';
+
+import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
-import { Suspense } from 'react';
+import { Layout } from './Layout';
+import { Phonebook } from './App.styled';
+
+const HomePage = lazy(() => import('pages/Home/Home'));
+const RegisterPage = lazy(() => import('pages/Registration/Registration'));
+const LoginPage = lazy(() => import('pages/Login/Login'));
+const ContactsPage = lazy(() => import('pages/Contacts/Contacts'));
 
 
 export default function App() {
   return (
     <Phonebook>
-        <Suspense fallback={null}>
-          <Outlet />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="registration" element={<Registration />} />
-            <Route path="/movies/:id" element={<MovieDetails />}>
-              <Route path="cast" element={<Cast />} />
-              <Route path="reviews" element={<Reviews />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="/registration" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="contacts" element={<ContactsPage />} />
             </Route>
-            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
-        </Suspense>
-      <h2>
-        <MdMenuBook />
-        Phonebook
-      </h2>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
     </Phonebook>
   );
 }
