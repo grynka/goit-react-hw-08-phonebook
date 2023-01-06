@@ -11,7 +11,10 @@ export const AppBar = () => {
 const { isLoggedIn } = useAuth();
 
 return (
-    <AppBarr position="static">
+    <AppBarr position="static"
+    sx={{
+
+              textDecoration: 'none'}}>
       <Toolbar>
          <Typography
             variant="h5"

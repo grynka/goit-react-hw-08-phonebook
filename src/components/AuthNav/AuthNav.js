@@ -1,32 +1,14 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'components/Navigation/Navigation.styled';
 
 export const AuthNav = () => {
   return (
     <>
-      <NavLink
-        style={{
-          textDecoration: 'none',
-          color: 'white',
-          fontWeight: 500,
-          textTransform: 'uppercase',
-          margin: 10,
-        }}
-        to="/registration"
-      >
-        Registration
-      </NavLink>
-      <NavLink
-        style={{
-          textDecoration: 'none',
-          color: 'white',
-          fontWeight: 500,
-          textTransform: 'uppercase',
-          margin: 10,
-        }}
-        to="/login"
-      >
-        Login
-      </NavLink>
+      <Link to="/registration">
+      Registration
+      </Link>
+      <Link to="/login">
+      Login
+      </Link>
     </>
   );
 };

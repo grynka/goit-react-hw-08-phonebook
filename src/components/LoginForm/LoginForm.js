@@ -15,6 +15,9 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 export const LoginForm = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(show => !show);
@@ -22,16 +25,29 @@ export const LoginForm = () => {
     event.preventDefault();
   };
 
+  const handleChange = event => {
+    switch (event.currentTarget.name) {
+      case 'email':
+        setEmail(event.currentTarget.value);
+        break;
+
+      case 'password':
+        setPassword(event.currentTarget.value);
+        break;
+
+      default:
+        return;
+    }
+  };
+
+
   const handleSubmit = event => {
     event.preventDefault();
-    const form = event.currentTarget;
-    dispatch(
+        dispatch(
       login({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        email, password
       })
     );
-    form.reset();
   };
 
   return (
@@ -39,10 +55,11 @@ export const LoginForm = () => {
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <TextField
+          onChange={handleChange}
           label="Email"
           name="email"
           id="outlined-start-adornment2"
-          sx={{ m: 1, width: '25ch' }}
+          sx={{ m: 1, width: '100%' }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -51,12 +68,13 @@ export const LoginForm = () => {
             ),
           }}
         />
-        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+        <FormControl sx={{ m: 1, width: '100%' }} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">
             Password
           </InputLabel>
           <OutlinedInput
             name="password"
+            onChange={handleChange}
             id="outlined-adornment-password"
             type={showPassword ? 'text' : 'password'}
             startAdornment={
@@ -80,11 +98,11 @@ export const LoginForm = () => {
           />
         </FormControl>
 
-        <p>
+
           <Button variant="outlined" type="submit">
             Log in
           </Button>
-        </p>
+
       </form>
     </Box>
   );
