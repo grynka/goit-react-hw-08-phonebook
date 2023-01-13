@@ -10,9 +10,6 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.3",
     "@reduxjs/toolkit": "^1.9.1",
-    "@testing-library/jest-dom": "^5.16.3",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
     "formik": "^2.2.9",
     "material-ui-phone-number": "^3.0.0",
@@ -58,6 +55,9 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "web-vitals": "^3.1.1"
   }
 }
