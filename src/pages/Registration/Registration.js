@@ -62,7 +62,6 @@ export default function RegistrationForm() {
       toast.error('Пароли не совпадают');
       return;
     }
-    toast.success('Registration success');
     dispatch(
       register({
         name,

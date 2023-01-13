@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
@@ -44,7 +44,6 @@ export default function Login() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    toast.success('Login success');
     dispatch(
       login({
         email,
