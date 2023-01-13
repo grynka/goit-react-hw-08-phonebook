@@ -4,9 +4,9 @@ import { getContacts, getFilter } from 'redux/selectors';
 import { fetchContacts } from 'redux/operation';
 import { getError, getIsLoading } from 'redux/selectors';
 import { deleteContact } from 'redux/operation';
-import { MdAccountCircle, MdHighlightOff } from 'react-icons/md';
-import { List, BtnDel, Item } from './ContactList.styled';
-
+import { List, BtnDel, Item, Circle, Trash } from './ContactList.styled';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -24,24 +24,26 @@ const ContactList = () => {
 
   const deleteContactId = contactId => {
     dispatch(deleteContact(contactId));
+    toast.success(`Контакт успешно удален!`);
   };
 
   return (
     <>
       {isLoading && <p>Loading contacts...</p>}
-      {error && <p>{error}</p>}
+      {error && toast.error({ error })}
       <List>
         {filteredContacts.length > 0 &&
           filteredContacts.map(({ id, name, number }) => (
             <Item key={id}>
-              <MdAccountCircle style={{ fontSize: '20px' }} />
+              <Circle>{name.charAt(0).toUpperCase()}</Circle>
               {name}, {number}{' '}
               <BtnDel onClick={() => deleteContactId(id)}>
-                <MdHighlightOff style={{ fontSize: '20px' }} />
+                <Trash />
               </BtnDel>
             </Item>
           ))}
       </List>
+      <ToastContainer />
     </>
   );
 };

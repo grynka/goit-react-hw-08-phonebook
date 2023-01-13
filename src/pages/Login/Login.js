@@ -13,10 +13,12 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
@@ -40,12 +42,13 @@ export default function Login() {
     }
   };
 
-
   const handleSubmit = event => {
     event.preventDefault();
-        dispatch(
+    toast.success('Login success');
+    dispatch(
       login({
-        email, password
+        email,
+        password,
       })
     );
   };
@@ -98,12 +101,11 @@ export default function Login() {
           />
         </FormControl>
 
-
-          <Button variant="outlined" type="submit">
-            Log in
-          </Button>
-
+        <Button variant="outlined" type="submit">
+          Log in
+        </Button>
       </form>
+      <ToastContainer />
     </Box>
   );
-};
+}

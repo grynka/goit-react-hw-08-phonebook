@@ -1,8 +1,15 @@
-import { Label, Input, Forms, Button } from './ContactForm.styled';
+import { Forms } from './ContactForm.styled';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operation';
 import { getContacts } from 'redux/selectors';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -29,42 +36,55 @@ export default function ContactForm() {
   const handleContactsCreate = event => {
     event.preventDefault();
     if (contactsName.includes(name)) {
-      alert('данный контакт уже существует');
+      toast.error('данный контакт уже существует');
       return;
     } else dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
+    toast.success(`Контакт ${name} успешно добавлен!`);
   };
 
   return (
     <Forms onSubmit={handleContactsCreate}>
-      <Label>
-        Name
-        <Input
-          value={name}
-          type="text"
-          name="name"
-          onChange={handleChange}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
-      </Label>
-      <Label>
-        Phone
-        <Input
-          type="tel"
-          name="number"
-          value={number}
-          onChange={handleChange}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-        />
-      </Label>
-      <p>
-        <Button type="submit">Add contact</Button>
-      </p>
+      <TextField
+        onChange={handleChange}
+        required
+        label="Name"
+        name="name"
+        value={name}
+        id="outlined-start-adornment"
+        sx={{ m: 1, width: '100%' }}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
+      />
+      <TextField
+        type="tel"
+        name="number"
+        value={number}
+        label="Phone"
+        onChange={handleChange}
+        required
+        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+        id="outlined-start-adornment2"
+        sx={{ m: 1, width: '100%' }}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <PhoneIphoneOutlinedIcon /> +38
+            </InputAdornment>
+          ),
+        }}
+      />
+
+      <Button variant="outlined" type="submit">
+        Add contact
+      </Button>
+      <ToastContainer />
     </Forms>
   );
 }

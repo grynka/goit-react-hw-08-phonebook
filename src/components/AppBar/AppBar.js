@@ -6,6 +6,8 @@ import AppBarr from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { MdMenuBook } from 'react-icons/md';
+
 
 export const AppBar = () => {
 const { isLoggedIn } = useAuth();
@@ -30,7 +32,7 @@ return (
               color: 'inherit',
               textDecoration: 'none',
             }}
-          >
+          ><MdMenuBook />
         Phonebook
         </Typography>
         <Box sx={{ flexGrow: 24,

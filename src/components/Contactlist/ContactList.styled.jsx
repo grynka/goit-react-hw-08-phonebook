@@ -1,4 +1,13 @@
 import styled from '@emotion/styled';
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+
+export const Trash = styled(DeleteForeverOutlinedIcon)`
+color: #E6E6E6;
+&:hover {
+    outline: none;
+    color: red;
+  }
+`;
 
 export const Button = styled.button`
   width: 80px;
@@ -35,6 +44,18 @@ export const Item = styled.li`
   padding: 0;
   display: flex;
   align-items: center;
-  height: 30px;
-  border-bottom: dotted 2px;
+  height: 40px;
+  border-bottom: solid #E6E6E6 1px;
+  width: 100%
+`;
+
+export const Circle = styled.div`
+width: 25px;
+height: 25px;
+border-radius: 50%;
+background-color: #E6E6E6;
+justify-content: center;
+align-items: center;
+display: flex;
+margin-right: 10px;
 `;

@@ -24,7 +24,7 @@ export const Forms = styled.form`
   width: 400px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
 `;
 
 export const Button = styled.button`

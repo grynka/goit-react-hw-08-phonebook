@@ -3,12 +3,15 @@ import { useDispatch } from 'react-redux';
 import { logout } from 'redux/auth/operatons';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const UserMenu = () => {
   const { username } = useAuth();
   const dispatch = useDispatch();
 
   const handleOut = () => {
+    toast.success("Logout success")
     dispatch(logout());
   };
 
@@ -28,6 +31,7 @@ export const UserMenu = () => {
       >
         Log out
       </Button>
+      <ToastContainer />
     </>
   );
 };

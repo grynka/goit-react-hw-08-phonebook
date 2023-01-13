@@ -1,7 +1,9 @@
 import React from 'react';
-import { Label, Input } from './Filter.styled';
 import { filterContacts } from 'redux/filterSlise';
 import { useDispatch } from 'react-redux';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -11,16 +13,22 @@ const Filter = () => {
   };
 
   return (
-    <Label>
-      Find contacts by Name
-      <Input
-        type="text"
-        name="find"
-        onChange={changeFilter}
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-      />
-    </Label>
+    <TextField
+      label="Find contacts by Name"
+      type="text"
+      name="find"
+      onChange={changeFilter}
+      pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+      id="outlined-start-adornment2"
+      sx={{ m: 1, width: '100%' }}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon />
+          </InputAdornment>
+        ),
+      }}
+    />
   );
 };
 

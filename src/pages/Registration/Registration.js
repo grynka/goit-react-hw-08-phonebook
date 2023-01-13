@@ -13,12 +13,14 @@ import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import KeyIcon from '@mui/icons-material/Key';
 import MailIcon from '@mui/icons-material/Mail';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RegistrationForm() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [password2, setPassword2] = useState('')
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
 
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
@@ -42,8 +44,8 @@ export default function RegistrationForm() {
         break;
 
       case 'confirm':
-          setPassword2(event.currentTarget.value);
-          break;
+        setPassword2(event.currentTarget.value);
+        break;
 
       default:
         return;
@@ -52,14 +54,15 @@ export default function RegistrationForm() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (password.length <8 ) {
-      alert("Пароль должен содержать не мение 8 символов")
-      return
+    if (password.length < 8) {
+      toast.error('Пароль должен содержать не мение 8 символов');
+      return;
     }
     if (password !== password2) {
-      alert("Пароли не совпадают")
-      return
+      toast.error('Пароли не совпадают');
+      return;
     }
+    toast.success('Registration success');
     dispatch(
       register({
         name,
@@ -69,7 +72,8 @@ export default function RegistrationForm() {
     );
   };
 
-  return (<>
+  return (
+    <>
       <h1>Registration</h1>
       <form onSubmit={handleSubmit}>
         <TextField
@@ -105,7 +109,7 @@ export default function RegistrationForm() {
             Password
           </InputLabel>
           <OutlinedInput
-            name='password'
+            name="password"
             id="outlined-adornment-password"
             onChange={handleChange}
             type={showPassword ? 'text' : 'password'}
@@ -129,10 +133,10 @@ export default function RegistrationForm() {
         </FormControl>
         <FormControl sx={{ m: 1, width: '100%' }} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password2">
-          Confirm Password
+            Confirm Password
           </InputLabel>
           <OutlinedInput
-            name='confirm'
+            name="confirm"
             id="outlined-adornment-password2"
             onChange={handleChange}
             type={showPassword2 ? 'text' : 'password'}
@@ -154,8 +158,12 @@ export default function RegistrationForm() {
             label="Confirm Password"
           />
         </FormControl>
-    
-          <Button variant="outlined" type='submit'>Registration</Button>
-      
-      </form></>  );
-};
+
+        <Button variant="outlined" type="submit">
+          Registration
+        </Button>
+        <ToastContainer />
+      </form>
+    </>
+  );
+}
